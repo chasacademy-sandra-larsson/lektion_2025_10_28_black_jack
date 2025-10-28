@@ -1,5 +1,3 @@
-# lektion_2025_10_28_black_jack🎯 Målet med spelet
-
 Målet är att få en hand med så högt värde som möjligt – utan att gå över 21.
 Du spelar mot dealern (banken), inte mot andra spelare.
 
