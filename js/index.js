@@ -3,6 +3,7 @@ let gameIsAlive = false;
 let cards = [];
 let sum = 0;
 let hasBlackJack = false;
+const baseUrl = "https://deckofcardsapi.com/static/img/";
 
 // Kan användas om ni vill bygga ut Black Jack-spelet
 const player = {
@@ -38,11 +39,20 @@ function startGame() {
 function getRandomCard() {
 
     let randomNumber = Math.floor((Math.random() * 13) + 1)
+
+     let randomSuit = Math.floor((Math.random() * 4) + 1)
     
     return {
         value: getCardValue(randomNumber),
+        suit: getSuit(randomSuit);
         displayValue: randomNumber
+
     };
+}
+
+function getSuit(suitNumber) {
+    const suits = ['S', 'D', 'C', 'H']; // Spades, Diamonds, Clubs, Hearts
+    return suits[suitNumber];
 }
 
 
@@ -91,6 +101,23 @@ function getCardValue(number) {
         return number; // 2,3,4,5,6,7,8,9,10
     }
 
+}
+
+// Logik så att datorn avgör om ess ska bli 1 eller 11
+function calculateAceValue() {
+    // Låta datorn avgöra om man ska ha 1 eller 11
+    let ace = -1;
+    // sum = 9 => 11
+    // sum = 10 => 11
+    // sum = 11 => 1
+    // sum = 12 => 1
+    
+    if(sum >= 11) {
+      ace = 1;
+    } else {
+        ace = 11;
+    }
+    return ace;
 }
 
 function promptForAceValue() {
